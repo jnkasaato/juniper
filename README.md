@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Juniper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app is a decentralized e-commerce platform that allows users to purchase items using Ethereum cryptocurrency. It provides a seamless shopping experience with secure transactions on the blockchain.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Cryptocurrency Payments: Users can make secure and borderless purchases using Ethereum (ETH) cryptocurrency, ensuring fast and efficient transactions.
+- Decentralized Marketplace: The app operates on a decentralized blockchain network, eliminating the need for intermediaries and promoting trust and transparency in e-commerce.
+- User-Friendly Interface: With an intuitive and user-friendly design, the app offers a seamless shopping experience, making it easy for customers to browse, select, and buy items.
+- Smart Contract Integration: Smart contracts are utilized to automate and enforce transactions, ensuring that both buyers and sellers adhere to the agreed-upon terms.
+- Item Recommendations: The app provides personalized item recommendations based on user preferences, enhancing the shopping experience and helping users discover new products of interest.
 
-### `npm start`
+## Technology Stack & Tools
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Solidity (Smart Contracts)
+- Javascript (React & Testing)
+- [Hardhat](https://hardhat.org/) (Development Framework)
+- [Ethers.js](https://docs.ethers.io/v5/) (Blockchain Interaction)
+- [React.js](https://reactjs.org/) (Frontend)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+Make sure you have the following prerequisites installed:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js
+- Git
+- Ganache
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Set Up
 
-### `npm run eject`
+### 1. Clone the repository:
+`$ git clone https://github.com/jnkasaato/juniper.git`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Navigate to the project directory:
+`$ cd juniper`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Install dependencies:
+`$ npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. Run tests
+`$ npx hardhat test`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 5. Start Hardhat node
+`$ npx hardhat node`
 
-## Learn More
+### 6. Run deployment script
+`$ npx hardhat run ./scripts/deploy.js --network localhost`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 7. Start frontend
+`$ npm run start`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+Access the app in your web browser at http://localhost:3000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcomed! If you'd like to contribute to the project, please follow our contribution guidelines.
