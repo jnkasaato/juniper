@@ -8,116 +8,165 @@ import itemsData from './items.json';
 
 
 const App = () => {
-  const [userAddress, setUserAddress] = useState(null);
-  const [networkStatus, setNetworkStatus] = useState('Network');
-  const [isWalkMenuOpen, setIsWalkMenuOpen] = useState(false);
-  const [isWearMenuOpen, setIsWearMenuOpen] = useState(false);
-  const [isFoodMenuOpen, setIsFoodMenuOpen] = useState(false);
-  const [isGroomMenuOpen, setIsGroomMenuOpen] = useState(false);
-  const [isTravelMenuOpen, setIsTravelMenuOpen] = useState(false);
-  const [isPlayMenuOpen, setIsPlayMenuOpen] = useState(false);
-  const [isSent, setIsSent] = useState(false);
+    const [userAddress, setUserAddress] = useState(null);
+    const [networkStatus, setNetworkStatus] = useState('Network');
+    const [isWalkMenuOpen, setIsWalkMenuOpen] = useState(false);
+    const [isWearMenuOpen, setIsWearMenuOpen] = useState(false);
+    const [isFoodMenuOpen, setIsFoodMenuOpen] = useState(false);
+    const [isGroomMenuOpen, setIsGroomMenuOpen] = useState(false);
+    const [isTravelMenuOpen, setIsTravelMenuOpen] = useState(false);
+    const [isPlayMenuOpen, setIsPlayMenuOpen] = useState(false);
+    const [isSent, setIsSent] = useState(false);
 
-  const toggleWalkMenu = () => {
-    setIsWalkMenuOpen(!isWalkMenuOpen);
-  };
+    const toggleWalkMenu = () => {
+        setIsWalkMenuOpen(!isWalkMenuOpen);
+    };
 
-  const toggleWearMenu = () => {
-    setIsWearMenuOpen(!isWearMenuOpen);
-  };
+    const toggleWearMenu = () => {
+        setIsWearMenuOpen(!isWearMenuOpen);
+    };
 
-  const toggleFoodMenu = () => {
-    setIsFoodMenuOpen(!isFoodMenuOpen);
-  };
+    const toggleFoodMenu = () => {
+        setIsFoodMenuOpen(!isFoodMenuOpen);
+    };
 
-  const togglePlayMenu = () => {
-    setIsPlayMenuOpen(!isPlayMenuOpen);
-  };
+    const togglePlayMenu = () => {
+        setIsPlayMenuOpen(!isPlayMenuOpen);
+    };
 
-  const toggleTravelMenu = () => {
-    setIsTravelMenuOpen(!isTravelMenuOpen);
-  };
+    const toggleTravelMenu = () => {
+        setIsTravelMenuOpen(!isTravelMenuOpen);
+    };
 
-  const toggleGroomMenu = () => {
-    setIsGroomMenuOpen(!isGroomMenuOpen);
-  };
+    const toggleGroomMenu = () => {
+        setIsGroomMenuOpen(!isGroomMenuOpen);
+    };
 
-  const handleSubscribe = () => {
-    setIsSent(true);
-  };
+    const handleSubscribe = () => {
+        setIsSent(true);
+    };
 
-
-  //connect metamask
-  const connectToMetaMask = async () => {
-    try {
-      if (window.ethereum) {
-        if (!userAddress) {
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          setUserAddress(accounts[0]);
-        } else {
-          await window.ethereum.request({ method: 'eth_accounts' });
-          setUserAddress(null);
+    //connect metamask
+    const connectToMetaMask = async () => {
+        try {
+            if (window.ethereum) {
+                if (!userAddress) {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    setUserAddress(accounts[0]);
+                } else {
+                    await window.ethereum.request({ method: 'eth_accounts' });
+                    setUserAddress(null);
+                }
+            } else {
+                alert('MetaMask is not installed. Please install MetaMask to connect.');
+            }
+        } catch (error) {
+            console.error('Error connecting to MetaMask:', error);
+            alert('Failed to connect to MetaMask. Please try again.');
         }
-      } else {
-        alert('MetaMask is not installed. Please install MetaMask to connect.');
-      }
-    } catch (error) {
-      console.error('Error connecting to MetaMask:', error);
-      alert('Failed to connect to MetaMask. Please try again.');
-    }
-  };
+    };
 
+    useEffect(() => {
+        connectToMetaMask();
+    }, []);
 
-  useEffect(() => {
-    connectToMetaMask();
-  }, []);
+    const handleNetworkStatusChange = async (id) => {
+        try {
 
-  const handleNetworkStatusChange = async (id) => {
-    try {
-      
-      if (window.ethereum) {
-        if (userAddress) {
-          await window.ethereum.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: `${id}` }], 
-          });
-          setNetworkStatus('Sepolia');
-        } else {
-        
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          setUserAddress(accounts[0]);
+            if (window.ethereum) {
+                if (userAddress) {
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: `${id}` }],
+                    });
+                    setNetworkStatus('Sepolia');
+                } else {
+
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    setUserAddress(accounts[0]);
+                }
+            } else {
+                alert('MetaMask is not installed. Please install MetaMask to connect.');
+            }
+        } catch (error) {
+            console.error('Error handling network status change:', error);
+            alert('Failed to switch network. Please try again.');
         }
-      } else {
-        alert('MetaMask is not installed. Please install MetaMask to connect.');
-      }
-    } catch (error) {
-      console.error('Error handling network status change:', error);
-      alert('Failed to switch network. Please try again.');
-    }
-  };
+    };
 
-  return (
-    <div className="app">
-      <h2 className="app__welcome">Welcome to Juniper Garden! Shop Now</h2>
-      <div className="nav__branding">
-        <img src="/icon.png" alt="Juniper Logo" />
-        <h1>Juniper Garden</h1>
-        <div className="nav__connect">
-          {userAddress ? (
-            <>
-              <button onClick={connectToMetaMask}>
-                <h2>{userAddress.slice(0, 4)}...{userAddress.slice(-4)}</h2>
-              </button>
-            </>
-          ) : (
-            <button className="nav__disconnect" onClick={connectToMetaMask}>
+    return (
+      <div className="app">
+        <h2 className="app__welcome">Welcome to Juniper Garden! Shop Now</h2>
+        <Router>
+          <div className="nav__branding">
+            <div>
+              <div className="nav__links">
+                <ul>
+                  <li onMouseEnter={togglePlayMenu} onMouseLeave={togglePlayMenu}>
+                    <Link to="/play" className="nav-link" ><h2>Play</h2></Link>
+                    {isPlayMenuOpen && (
+                      <ul className="nav__dropdown_menu">
+                        <Link to="/play">Shop All</Link>
+                      </ul>
+                    )}
+                  </li>
+                  <li onMouseEnter={toggleFoodMenu} onMouseLeave={toggleFoodMenu}>
+                    <Link to="/food" className="nav-link" ><h2>Eat</h2></Link>
+                    {isFoodMenuOpen && (
+                      <ul className="nav__dropdown_menu">
+                        <Link to="/meal">Meals</Link>
+                        <Link to="/treat">Treats</Link>
+                      </ul>
+                    )}
+                  </li>
+                  <li onMouseEnter={toggleWalkMenu} onMouseLeave={toggleWalkMenu} >
+                    <Link to="/walk" className="nav-link" ><h2>Walk</h2></Link>
+                    {isWalkMenuOpen && (
+                      <ul className="nav__dropdown_menu">
+                        <Link to="/harness">Harnesses</Link>
+                        <Link to="/ipfs/bafybeifhdqvesmumzcjilbyc37n7mbjhuz3xinls3eo47pccwyph7ybksi/collar">Collars</Link>
+                        <Link to="/leash">Leashes</Link>
+                      </ul>
+                    )}
+                  </li>
+                  <li onMouseEnter={toggleWearMenu} onMouseLeave={toggleWearMenu} >
+                    <Link to="/wear" className="nav-link"><h2>Wear</h2></Link>
+                    {isWearMenuOpen && (
+                      <ul className="nav__dropdown_menu">
+                        <Link to="/costume">Costumes</Link>
+                        <Link to="/bandana">Bandanas</Link>
+                        <Link to="/bow">Bows</Link>
+                      </ul>
+                    )}
+                  </li>
+                  <li onMouseEnter={toggleGroomMenu} onMouseLeave={toggleGroomMenu}>
+                    <Link to="/groom" className="nav-link"><h2>Groom</h2></Link>
+                    {isGroomMenuOpen && (
+                      <ul className="nav__dropdown_menu">
+                        <Link to="/groom">Shop All</Link>
+                      </ul>
+                    )}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <Link to="/" className="nav-link" ><h1>Juniper Garden</h1></Link>
+            <div className="nav__connect">
               {userAddress ? (
-                <h2>{userAddress.slice(0, 4)}...{userAddress.slice(-4)}</h2>
+                <>
+                  <button onClick={connectToMetaMask}>
+                    <h2>{userAddress.slice(0, 4)}...{userAddress.slice(-4)}</h2>
+                  </button>
+                </>
               ) : (
-                <h2>Connect</h2>
+                <button className="nav__disconnect" onClick={connectToMetaMask}>
+                  {userAddress ? (
+                    <h2>{userAddress.slice(0, 4)}...{userAddress.slice(-4)}</h2>
+                  ) : (
+                    <h2>Connect</h2>
+                  )}
+                </button>
               )}
-            </button>
-          )}
      
           <select className="network" onChange={(event) => handleNetworkStatusChange(event.target.value)}>
             <option value="0x5">Goerli</option>
@@ -128,86 +177,7 @@ const App = () => {
 
         </div>
         </div>
-        <Router>
-          <div>
-            <div className="nav__links">
-              <ul>
-                <li><Link to="/" className="nav-link" ><h2>Home</h2></Link></li>
-                <li
-                  onMouseEnter={togglePlayMenu}
-                  onMouseLeave={togglePlayMenu}
-                >
-                  <Link to="/play" className="nav-link" ><h2>Play</h2></Link>
-                  {isPlayMenuOpen && (
-                    <ul className="nav__dropdown_menu">
-                      <Link to="/play">Shop All</Link>
-                    </ul>
-                  )}
-                </li>
-
-                <li
-                  onMouseEnter={toggleFoodMenu}
-                  onMouseLeave={toggleFoodMenu}
-                >
-                  <Link to="/food" className="nav-link" ><h2>Food</h2></Link>
-                  {isFoodMenuOpen && (
-                    <ul className="nav__dropdown_menu">
-                      <Link to="/meal">Meals</Link>
-                      <Link to="/treat">Treats</Link>
-                    </ul>
-                  )}
-                </li>
-                <li
-                  onMouseEnter={toggleWalkMenu}
-                  onMouseLeave={toggleWalkMenu}
-                >
-                  <Link to="/walk" className="nav-link" ><h2>Walk</h2></Link>
-                  {isWalkMenuOpen && (
-                    <ul className="nav__dropdown_menu">
-                      <Link to="/harness">Harnesses</Link>
-                      <Link to="/collar">Collars</Link>
-                      <Link to="/leash">Leashes</Link>
-                    </ul>
-                  )}
-                </li>
-                <li
-                  onMouseEnter={toggleWearMenu}
-                  onMouseLeave={toggleWearMenu}
-                >
-                  <Link to="/wear" className="nav-link"><h2>Wear</h2></Link>
-                  {isWearMenuOpen && (
-                    <ul className="nav__dropdown_menu">
-                      <Link to="/costume">Costumes</Link>
-                      <Link to="/bandana">Bandanas</Link>
-                      <Link to="/bow">Bows</Link>
-                    </ul>
-                  )}
-                </li>
-                <li
-                  onMouseEnter={toggleTravelMenu}
-                  onMouseLeave={toggleTravelMenu}
-                >
-                  <Link to="/travel" className="nav-link"><h2>Travel</h2></Link>
-                  {isTravelMenuOpen && (
-                    <ul className="nav__dropdown_menu">
-                      <Link to="/travel">Shop All</Link>
-                    </ul>
-                  )}
-                </li>
-                <li
-                  onMouseEnter={toggleGroomMenu}
-                  onMouseLeave={toggleGroomMenu}
-                >
-                  <Link to="/groom" className="nav-link"><h2>Groom</h2></Link>
-                  {isGroomMenuOpen && (
-                    <ul className="nav__dropdown_menu">
-                      <Link to="/groom">Shop All</Link>
-                    </ul>
-                  )}
-                </li>
-              </ul>
-            </div>
-          </div>
+        
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/play/*" element={<Category category="play" />} />
@@ -217,7 +187,7 @@ const App = () => {
             <Route path="/treat/*" element={<Category category="treat" />} />
             <Route path="/walk/*" element={<Category category="walk" />} />
             <Route path="/harness/*" element={<Category category="harness" />} />
-            <Route path="/collar/*" element={<Category category="collar" />}/>
+            <Route path="/ipfs/bafybeifhdqvesmumzcjilbyc37n7mbjhuz3xinls3eo47pccwyph7ybksi/collar/*" element={<Category category="collar" />}/>
             <Route path="/leash/*" element={<Category category="leash" />}/>
             <Route path="/costume/*" element={<Category category="costume" />} />
             <Route path="/bandana/*" element={<Category category="bandana" />} />
@@ -273,6 +243,6 @@ const App = () => {
         </Router>
       </div>
     );
-  };
+};
 
-  export default App;
+export default App;

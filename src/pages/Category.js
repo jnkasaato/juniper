@@ -1,91 +1,91 @@
-import React, {useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import itemsData from '../items.json';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Category = ({ category  }) => {
-  const [selectedColor, setSelectedColor] = useState(false); 
-  const [isFadingIn, setIsFadingIn] = useState(false); 
-  const navigate = useNavigate();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+const Category = ({ category }) => {
+    const [selectedColor, setSelectedColor] = useState(false);
+    const [isFadingIn, setIsFadingIn] = useState(false);
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsFadingIn(true);
-    }, 100);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-    return () => clearTimeout(timer);
-  }, []);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsFadingIn(true);
+        }, 100);
 
-  let filteredItems = [];
+        return () => clearTimeout(timer);
+    }, []);
 
-  // filter category
-  if (category === 'walk') {
-    filteredItems = itemsData.items.filter(
-      (item) => item.category === 'collar' || item.category === 'leash' || item.category === 'harness'
-    );
-  } else if (category === 'wear') {
-    filteredItems = itemsData.items.filter(
-      (item) => item.category === 'bandana' || item.category === 'costume' || item.category === 'bow'
-    );
-  } else if (category === 'food') {
-    filteredItems = itemsData.items.filter(
-      (item) => item.category === 'meal' || item.category === 'treat'
-    );
-  } else {
-    filteredItems = itemsData.items.filter((item) => item.category === category);
-  }
+    let filteredItems = [];
 
-  if (selectedColor) {
-    filteredItems = filteredItems.filter(
-      (item) => item.color === selectedColor
-    );
-  }
+    // filter category
+    if (category === 'walk') {
+        filteredItems = itemsData.items.filter(
+            (item) => item.category === 'collar' || item.category === 'leash' || item.category === 'harness'
+        );
+    } else if (category === 'wear') {
+        filteredItems = itemsData.items.filter(
+            (item) => item.category === 'bandana' || item.category === 'costume' || item.category === 'bow'
+        );
+    } else if (category === 'food') {
+        filteredItems = itemsData.items.filter(
+            (item) => item.category === 'meal' || item.category === 'treat'
+        );
+    } else {
+        filteredItems = itemsData.items.filter((item) => item.category === category);
+    }
 
-  const handleColorClick = (color) => {
-    setSelectedColor(color);
-  };
+    if (selectedColor) {
+        filteredItems = filteredItems.filter(
+            (item) => item.color === selectedColor
+        );
+    }
 
-  var colorOptions = [
-    'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'grey', 'black', 'brown', 'pattern'
-  ];
-
-  const handleContainerClick = (item) => {
-    navigate(`/${item.category}/${item.name}`);
-    window.scrollTo(0, 0);
-  };
-
-  const handleGoHere = (link)=>{
-    navigate(`${link}`);
-  };
-
-  const project1DivRef = useRef(null);
-  useEffect(() => {
-    applyFloatInAnimation(project1DivRef);
-  }, []);
-
-  const applyFloatInAnimation = (divRef) => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        divRef.current.classList.add('float-in');
-      }
-    });
-    observer.observe(divRef.current);
-    return () => {
-      observer.disconnect();
+    const handleColorClick = (color) => {
+        setSelectedColor(color);
     };
-  };
 
-  return (
-    <div className="category">
+    var colorOptions = [
+        'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'grey', 'black', 'brown', 'pattern'
+    ];
+
+    const handleContainerClick = (item) => {
+        navigate(`/${item.category}/${item.name}`);
+        window.scrollTo(0, 0);
+    };
+
+    const handleGoHere = (link) => {
+        navigate(`${link}`);
+    };
+
+    const project1DivRef = useRef(null);
+    useEffect(() => {
+        applyFloatInAnimation(project1DivRef);
+    }, []);
+
+    const applyFloatInAnimation = (divRef) => {
+        const observer = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+                divRef.current.classList.add('float-in');
+            }
+        });
+        observer.observe(divRef.current);
+        return () => {
+            observer.disconnect();
+        };
+    };
+
+    return (
+        <div className="category">
       <div className="category__partition">
         <p
           onClick={()=> handleGoHere('/') } >
           home/ </p>
-        <p onClick={()=> handleGoHere(`/${category}`) } > 
+        <p   onClick={()=> handleGoHere(`/${category}`) } > 
           {category}</p>
       </div>
       <div className="category__main">
@@ -114,7 +114,7 @@ const Category = ({ category  }) => {
           </div>
         </div>
         <div className={`category__list_items  ${isFadingIn ? 'fade-in' : ''}`} ref={project1DivRef}>
-          <h3>{category}</h3>
+          <h3 className="category__title" >{category}</h3>
           {filteredItems.length === 0 ? (
             <p>Sorry, there are no items in this selection.</p>
           ) : (
@@ -135,7 +135,7 @@ const Category = ({ category  }) => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
 export default Category;

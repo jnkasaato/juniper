@@ -56,29 +56,17 @@ const HomePage = () => {
 
   return (
     <div className="home">
-      <div className="home__intro" style={{ backgroundColor: `${homeIntro.intro[currentIndex].color}`}}>
-        
-          <div className = "home__intro-info " style={{ opacity: 1 }}>
-            <h3>{homeIntro.intro[currentIndex].h3}</h3>
-            <h4>{homeIntro.intro[currentIndex].h4}<br/>{homeIntro.intro[currentIndex].h4_2}</h4>
-            <h5>{homeIntro.intro[currentIndex].h5}</h5>
-            <button
-              onClick={()=> handleViewCollection( `${homeIntro.intro[currentIndex].h6}` ) }>
-              <h6> SHOP COLLECTION</h6>
-              </button>
-          </div>
-          <img className="home__intro-arrow left" alt=" "
-          src ='/left-arrow.png'
-          onClick = {() => handleArrowClick('left')}/>
-        
-        <div className = "home__intro-img-section">
-          <img className = "home__intro-img" src={homeIntro.intro[currentIndex].image} alt="img1" />
-          <img className="home__intro-arrow right"   alt=" "
-          src ='/right-arrow.png'
-          onClick = {() => handleArrowClick('right')}/>
+      <div className = "home__intro2">
+        <div className = "home__intro2_info" >
+          <h1> Find Your Favorites</h1>
+          <h2> Duke's Day</h2>
+          <button
+            onClick={()=> handleViewCollection( `${homeIntro.intro[currentIndex].h6}` ) }>
+            <h3> SHOP COLLECTION</h3>
+          </button>
         </div>
+        <img src = "/navy3.jpg"/>
       </div>
-
       <div className = "home__collections">
       <div className = "home__collections-header">
         <h1>All Play And No Work</h1>
@@ -86,7 +74,7 @@ const HomePage = () => {
         >Olivia's Collection</h2>
       </div>
       <div className = "home__collections-whole floating-div" ref={project1DivRef}>
-        <img className = "home__collections-main-img"  src="https://ipfs.io/ipfs/bafybeihf5jovlvvcr3jn7pa7v2qccbiblkgct6turycsrb4yyqqywuo77y/ghost.jpg" alt="img1" />
+        <img className = "home__collections-main-img"  src="/ghost.jpg" alt="img1" />
         <div className="home__collections-4-items" >
            {itemsData.items
               .filter((item) => item.category === 'costume')

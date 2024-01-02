@@ -21,13 +21,14 @@
 
 body {
   margin: 0;
-  font-family: "Comfortaa";
+  font-family: 'Comfortaa';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 h1{
-  font-family:'Cinzel Decorative', cursive;
+  font-family: 'Comfortaa';
   color: var(--clr-black);
   font-size: 2.5em;
   font-weight: 300;
@@ -67,22 +68,19 @@ h4{
   background-color: #e8cec8;
   margin-bottom: 20px;
   margin-top: 0;
-  font-size: .9em;
+  font-size: .7em;
+  font-weight: 100px;
   text-transform: uppercase;
   letter-spacing: .1em;
 }
 
 .nav__branding {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
   align-items: center;
   padding: 0 5%;
   width: 100%;
-}
-
-.nav__branding img {
-  width: 50px;
-  margin-right: 200px;
+  padding-bottom:20px;
 }
 
 .nav__links ul {
@@ -96,15 +94,17 @@ h4{
   color: white;
   font-weight: bold;
   margin: 0 20px;
+  padding: 0 50px;
 }
 
 .nav-link h2{
-font-weight: 700;
+font-weight: 400;
 font-size: 1.1em;
 }
 
-.nav-link:hover {
-  text-decoration: underline;
+.nav__connect h2{
+  font-size: 1em;
+   font-weight: 400;
 }
 .network ,
 .connect button,
@@ -112,27 +112,12 @@ font-size: 1.1em;
 .nav__connect button{
   background-color: var(--clr-white);
   color: var(--clr-black);
-  border: 2px solid var(--clr-black);
+  border: 1px solid var(--clr-black);
   border-radius: 4px;
   padding: 5px 10px;
   font-family: "Comfortaa";
   font-size: 1em;
-  font-weight: 700;
-  cursor: pointer;
-  margin-left: 15px;
-}
-
-.connect button,
-.nav__disconnect button,
-.nav__connect button{
-  background-color: var(--clr-white);
-  color: var(--clr-black);
-  border: 2px solid var(--clr-black);
-  border-radius: 4px;
-  padding: 5px 10px;
-  font-family: "Comfortaa";
-  font-size: 1em;
-  font-weight: 700;
+  font-weight: 400;
   cursor: pointer;
   margin-left: 15px;
 }
@@ -167,7 +152,7 @@ font-size: 1.1em;
 }
 
 .nav__dropdown_menu.active {
-  display: block;
+  display: block; 
 }
 
 /* ------------------------------------------------------ */
@@ -203,10 +188,72 @@ font-size: 1.1em;
   display: grid;
   grid-template-columns: 50% 50%;
   align-items:center;
-  overflow: hidden;
+  
+  position: relative;
+  top: 100px;
+}
 
+
+
+.home__intro2{
+  height: 700px;
+  width: 100%;
+  align-items:center;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+.home__intro2 img{
+  width: 100%;
+  opacity: 0;
+  animation: fadeIn .8s ease-in-out forwards;
+}
+
+.home__intro2_info {
+  position:absolute;
+  background-color: var(--clr-blue);
+  top: 40%;
+  color: var(--clr-white);
+  padding: 30px;
+}
+
+.home__intro2_info h1,
+.home__intro2_info h2,
+.home__intro2_info h3{
+  animation: fadeIn 1.4s ease-in-out forwards;
+}
+
+.home__intro2_info h1,
+.home__intro2_info h3{
+  font-family: 'Comfortaa', cursive;
+  color: var(--clr-white);
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.home__intro2_info h2{
+  font-family:'Cinzel Decorative', cursive;
+  color: var(--clr-white);
+  font-size: 3.2em;
+  font-weight: 400;
+}
+
+.home__intro2_info button{
+  color: var(--clr-white);
+  padding: 10px 40px;
+  animation: fadeInLeft .8s ease-in-out forwards;
+  border: 1px solid var(--clr-white);
+  background-color: transparent;
+}
+
+.home__intro2_info button:hover{
+  background-color: #ffffff99;
 
 }
+
+
+
 
 .home__intro-info{
   height: 700px;
@@ -455,6 +502,11 @@ font-size: 1.1em;
   font-weight: 600;
 }
 
+.category__title{
+  font-family:'Comfortaa', cursive;
+  font-size: 3.5em;
+  font-weight: 200;
+}
 .category__options_list_color{
   display:grid;
   grid-template-columns: 50% 50%;
@@ -473,8 +525,7 @@ font-size: 1.1em;
 
 
 .category__options_size_header h3,
-.category__options_color_header h3,
-.category__list_items h3{
+.category__options_color_header h3{
   font-family:'Comfortaa', cursive;
   color: var(--clr-black);
   font-size: 3em;
