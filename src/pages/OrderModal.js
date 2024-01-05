@@ -1,6 +1,4 @@
-const OrderModal = ({ item , isOpen, onClose, isSuccessful}) => {
- 
-
+const OrderModal = ({ item, isOpen, onClose, isSuccessful, size}) => {
   return (
     <div className="order__modal">
       <div className="modal__header">
@@ -23,22 +21,50 @@ const OrderModal = ({ item , isOpen, onClose, isSuccessful}) => {
       <div className="modal__content">
         <div className="modal__content_left">
           <h2>YOUR ORDER</h2>
-          <img src={`/items/img${item.id}.jpg`} alt={`/items/img${item.id}.jpg`} />
+          <img
+            src={`/items/img${item.id}.jpg`}
+            alt={`/items/img${item.id}.jpg`}
+          />
           <h2>{item.name}</h2>
-          <h3>Quantity: 1</h3>
-          <h3>VENDOR: {item.vendor}</h3>
+        </div>
+        <div className="modal__content_middle">
+          <h2>Order info</h2>
+          <div className="rating">
+            <h3>rating:</h3>
+            <img src={item.rating >= 5 ? '/items/star.png' : '/items/blank.png' }  alt="Star"  />
+            <img src={item.rating >= 4 ? '/items/star.png' : '/items/blank.png' }  alt="Star"  />
+            <img src={item.rating >= 3 ? '/items/star.png' : '/items/blank.png' }  alt="Star"  />
+            <img src={item.rating >= 2 ? '/items/star.png' : '/items/blank.png' }  alt="Star"  />
+            <img src={item.rating >= 1 ? '/items/star.png' : '/items/blank.png' }  alt="Star"  />
+          </div>
+          <div className="rating">
+            <h3>Quantity:</h3>
+            <h3> 1</h3>
+          </div>
+          <div className="rating">
+            <h3>COLOR: </h3>
+            <h3>{item.color}</h3>
+          </div>
+          <div className="rating">
+            <h3>ships from:</h3>
+            <h3>Boston</h3>
+          </div>
+          <div className="rating">
+            <h3>VENDOR: </h3>
+            <h3>{item.vendor}</h3>
+          </div>
         </div>
         <div className="modal__content_right">
-        <h2>shopping bag</h2>
-        <img src='/icon.png' alt="icon" />
-        <div className="modal__content_right_total">
-          <h3>TOTAL:</h3>
-          <h3>{item.cost} ETH</h3>
-        </div> 
-        </div>     
+          <h2>Louis & Co.</h2>
+          <img src="/icon.png" alt="icon" />
+          <div className="modal__content_right_total">
+            <h3>TOTAL:</h3>
+            <h3>{item.cost} ETH</h3>
+          </div>
+        </div>
       </div>
       <div className="modal__content_brand">
-      <h4>• JUNIPER GARDEN • FAMILY BRAND • EST 2017</h4>
+        <h4>• LOUIS & CO. • FAMILY BRAND • EST 2017</h4>
       </div>
     </div>
   );

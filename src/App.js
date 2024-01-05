@@ -9,7 +9,7 @@ import itemsData from './items.json';
 
 const App = () => {
     const [userAddress, setUserAddress] = useState(null);
-    const [networkStatus, setNetworkStatus] = useState('Network');
+    const [networkStatus, setNetworkStatus] = useState('0xAA36A7');
     const [isWalkMenuOpen, setIsWalkMenuOpen] = useState(false);
     const [isWearMenuOpen, setIsWearMenuOpen] = useState(false);
     const [isFoodMenuOpen, setIsFoodMenuOpen] = useState(false);
@@ -45,14 +45,24 @@ const App = () => {
     const handleSubscribe = () => {
         setIsSent(true);
     };
-
-    //connect metamask
+    useEffect(() => {
+        connectToMetaMask();
+    }, []);
     const connectToMetaMask = async () => {
         try {
             if (window.ethereum) {
                 if (!userAddress) {
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     setUserAddress(accounts[0]);
+                    window.ethereum.on('accountsChanged', (newAccounts) => {
+                        if (newAccounts[0] !== userAddress) {
+                            setUserAddress(newAccounts[0]);
+                        }
+                    });
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: `${networkStatus}` }],
+                    });
                 } else {
                     await window.ethereum.request({ method: 'eth_accounts' });
                     setUserAddress(null);
@@ -60,16 +70,8 @@ const App = () => {
             } else {
                 alert('MetaMask is not installed. Please install MetaMask to connect.');
             }
-        } catch (error) {
-            console.error('Error connecting to MetaMask:', error);
-            alert('Failed to connect to MetaMask. Please try again.');
-        }
+        } catch (error) {}
     };
-
-    useEffect(() => {
-        connectToMetaMask();
-    }, []);
-
     const handleNetworkStatusChange = async (id) => {
         try {
 
@@ -79,9 +81,8 @@ const App = () => {
                         method: 'wallet_switchEthereumChain',
                         params: [{ chainId: `${id}` }],
                     });
-                    setNetworkStatus('Sepolia');
+                    setNetworkStatus(id);
                 } else {
-
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     setUserAddress(accounts[0]);
                 }
@@ -95,8 +96,8 @@ const App = () => {
     };
 
     return (
-      <div className="app">
-        <h2 className="app__welcome">Welcome to Juniper Garden! Shop Now</h2>
+        <div className="app">
+        <h2 className="app__welcome">Welcome to Louis & Co.! Shop Now</h2>
         <Router>
           <div className="nav__branding">
             <div>
@@ -124,8 +125,9 @@ const App = () => {
                     {isWalkMenuOpen && (
                       <ul className="nav__dropdown_menu">
                         <Link to="/harness">Harnesses</Link>
-                        <Link to="/ipfs/bafybeifhdqvesmumzcjilbyc37n7mbjhuz3xinls3eo47pccwyph7ybksi/collar">Collars</Link>
+                        <Link to="/collar">Collars</Link>
                         <Link to="/leash">Leashes</Link>
+                        <Link to="/travel">Travel</Link>
                       </ul>
                     )}
                   </li>
@@ -150,7 +152,7 @@ const App = () => {
                 </ul>
               </div>
             </div>
-            <Link to="/" className="nav-link" ><h1>Juniper Garden</h1></Link>
+            <Link to="/" className="nav-link" ><h1>Louis & Co.</h1></Link>
             <div className="nav__connect">
               {userAddress ? (
                 <>
@@ -167,17 +169,14 @@ const App = () => {
                   )}
                 </button>
               )}
-     
           <select className="network" onChange={(event) => handleNetworkStatusChange(event.target.value)}>
-            <option value="0x5">Goerli</option>
             <option value="0xAA36A7">Sepolia</option>
+            <option value="0xAA36A7">Goerli</option>
             <option value="0x13881">Mumbai</option>
             <option value="0x7A69">Localhost</option>
           </select>
-
         </div>
         </div>
-        
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/play/*" element={<Category category="play" />} />
@@ -187,8 +186,8 @@ const App = () => {
             <Route path="/treat/*" element={<Category category="treat" />} />
             <Route path="/walk/*" element={<Category category="walk" />} />
             <Route path="/harness/*" element={<Category category="harness" />} />
-            <Route path="/ipfs/bafybeifhdqvesmumzcjilbyc37n7mbjhuz3xinls3eo47pccwyph7ybksi/collar/*" element={<Category category="collar" />}/>
-            <Route path="/leash/*" element={<Category category="leash" />}/>
+            <Route path="/collar/*" element={<Category category="collar" />}/>
+            <Route path="/leash" element={<Category category="leash" />}/>
             <Route path="/costume/*" element={<Category category="costume" />} />
             <Route path="/bandana/*" element={<Category category="bandana" />} />
             <Route path="/bow/*" element={<Category category="bow" />} />
@@ -207,7 +206,7 @@ const App = () => {
             <div className="footer__subscribe">
               <h1>Subscribe</h1>
               <p>
-                Welcome to the Juniper Garden, a delightful online pet store where you can explore a vibrant collection of pet essentials and accessories. Whether you're a pet parent or a pet lover, our app offers a wide range of grooming, apparel, and travel products to cater to your furry friend's every need. <br/><br/> Subscribe to stay up to date:
+                Welcome to the Louis & Co., a delightful online pet store where you can explore a vibrant collection of pet essentials and accessories. Whether you're a pet parent or a pet lover, our app offers a wide range of grooming, apparel, and travel products to cater to your furry friend's every need. <br/><br/> Subscribe to stay up to date:
               </p>
               <p>
                 <input type="email" className="contact__input" placeholder="Your email address" />
@@ -215,7 +214,7 @@ const App = () => {
                   {isSent ? 'Sent' : 'Subscribe'}
                 </button>
               </p>
-              <h3>Juniper Garden EST. 2017</h3>
+              <h3>Louis & Co. EST. 2017</h3>
             </div>
             <div className="footer__menu">
               <h1>Menu</h1>

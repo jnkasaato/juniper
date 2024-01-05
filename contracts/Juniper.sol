@@ -70,18 +70,10 @@ contract Juniper {
 
     function buy(uint256 _id) public payable {
         Item storage item = items[_id];
-
-       
-
-        require(item.stock > 0, "This item is out of stock");
-
         Order memory order = Order(block.timestamp, item);
-
         orderCount[msg.sender]++;
         orders[msg.sender][orderCount[msg.sender]] = order;
-
         item.stock--;
-
         emit ItemPurchased(msg.sender, orderCount[msg.sender], item.id);
     }
 

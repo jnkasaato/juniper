@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const Category = ({ category }) => {
     const [selectedColor, setSelectedColor] = useState(false);
     const [isFadingIn, setIsFadingIn] = useState(false);
-    const navigate = useNavigate();
+    const [sortOption, setSortOption] = useState('default'); 
+    const [gridColumns, setGridColumns] = useState(3);
+    
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -19,9 +21,10 @@ const Category = ({ category }) => {
         return () => clearTimeout(timer);
     }, []);
 
-    let filteredItems = [];
+    
 
     // filter category
+    let filteredItems = [];
     if (category === 'walk') {
         filteredItems = itemsData.items.filter(
             (item) => item.category === 'collar' || item.category === 'leash' || item.category === 'harness'
@@ -44,6 +47,12 @@ const Category = ({ category }) => {
         );
     }
 
+
+
+
+
+
+
     const handleColorClick = (color) => {
         setSelectedColor(color);
     };
@@ -61,10 +70,29 @@ const Category = ({ category }) => {
         navigate(`${link}`);
     };
 
-    const project1DivRef = useRef(null);
-    useEffect(() => {
-        applyFloatInAnimation(project1DivRef);
-    }, []);
+
+    const handleSortChange = (option) => {
+        setSortOption(option);
+    };
+    const sortedItems = [...filteredItems];
+    const navigate = useNavigate();
+
+    if (sortOption === 'alphabetical') {
+      sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOption === 'alphabetical-reverse') {
+      sortedItems.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (sortOption === 'reverse-default') {
+      sortedItems.reverse();
+    }
+
+
+
+    const handleColumnClick = (columns) => {
+      setGridColumns(columns);
+      
+    };
+
+
 
     const applyFloatInAnimation = (divRef) => {
         const observer = new IntersectionObserver((entries) => {
@@ -79,52 +107,47 @@ const Category = ({ category }) => {
         };
     };
 
+
     return (
         <div className="category">
       <div className="category__partition">
         <p
           onClick={()=> handleGoHere('/') } >
           home/ </p>
-        <p   onClick={()=> handleGoHere(`/${category}`) } > 
+        <p  onClick={()=> handleGoHere(`/${category}`) } > 
           {category}</p>
       </div>
       <div className="category__main">
-        <div className="category__options">
-          <div className="category__options_color">
-            <div className="category__options_color_header">
-              <h1>COLORS</h1>
-              <h3>-</h3>
-            </div>
-            <div className="category__options_list_color">
-              {colorOptions.map((color, index) => (
-                <h2 key={index} onClick={() => handleColorClick(color)}>{color}</h2>
-              ))}
-            </div>
-          </div>
-          <div className="category__options_size">
-            <div className="category__options_size_header">
-              <h1>SIZE</h1>
-              <h3>-</h3>
-            </div>
-            <h2>XSMALL</h2>
-            <h2>SMALL</h2>
-            <h2>MEDIUM</h2>
-            <h2>LARGE</h2>
-            <h2>XLARGE</h2>
-          </div>
-        </div>
-        <div className={`category__list_items  ${isFadingIn ? 'fade-in' : ''}`} ref={project1DivRef}>
+        <div className="category__list_items" >
           <h3 className="category__title" >{category}</h3>
+          <div className="category__subtitle" >
+            <div className="category__columns ">
+            <h1>columns</h1>
+                <select className="network" value={gridColumns} onChange={(e) => handleColumnClick(e.target.value)}>
+                  <option value="2">2</option>
+                  <option value="3">3 </option>
+                  <option value="4">4 </option>
+                </select>
+              </div>
+            <div className="category__sortby" >
+              <h1>sortby</h1>
+            <select className="network" value={sortOption} onChange={(e) => handleSortChange(e.target.value)}>
+              <option value="default">Recommended</option>
+              <option value="alphabetical">Alphabetical A-Z</option>
+              <option value="alphabetical-reverse">Alphabetical Z-A </option>
+              <option value="reverse-default">Best Selling</option>
+            </select>
+              </div>
+          </div>
           {filteredItems.length === 0 ? (
             <p>Sorry, there are no items in this selection.</p>
           ) : (
-            <div className="category__individual_items">
-              {filteredItems.map((item) => (
+            <div className={`category__individual_items columns-${gridColumns}`} >
+              {sortedItems.map((item) => (
                 <div
                   key={item.id}
                   onClick={() => handleContainerClick(item)}
-                  className="ITEM-CONTAINER"
-                >
+                  className="ITEM-CONTAINER">
                   <img src={`/items/img${item.id}.jpg`} alt={`/assets/img${item.name}.jpg`} />
                   <h5>{item.name}</h5>
                   <h6>{item.cost} ETH</h6>

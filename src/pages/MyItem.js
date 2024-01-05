@@ -13,6 +13,8 @@ const MyItem = ({ itemId }) => {
   const item = itemsData.items[itemId - 1];
   const category = item.category;
   let contractAddress;
+  let size;
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -30,12 +32,11 @@ const MyItem = ({ itemId }) => {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        const etherValue = item.cost; 
-        const weiValue = ethers.utils.parseEther(etherValue);
+        const weiValue = ethers.utils.parseEther(item.cost);
         const network = await provider.getNetwork();
 
           if (network.chainId === 31337 ){
-             contractAddress = '0x1780bCf4103D3F501463AD3414c7f4b654bb7aFd';
+             contractAddress = '0x49fd2BE640DB2910c2fAb69bB8531Ab6E76127ff';
           }
           else if ( network.chainId === 5){
              contractAddress = '0x722B94F797aF487d762C05cf8143a68f65B4Bb37';
@@ -44,12 +45,12 @@ const MyItem = ({ itemId }) => {
              contractAddress = '0xB59eedd21C653AA2f7e03f9461bBb718179EC8aC';
           }
           else {
-             contractAddress = '0xDF00FdF274A88f0C775879B0df363eE54155c78F';
+             contractAddress = '0x55f13B08056e14C9A31453CfF7cE9475e56BcF6C';
           }
 
         const contractAbi = Juniper.abi;
         const contract = new ethers.Contract(contractAddress, contractAbi, signer);
-        const transaction = await contract.connect(signer).buy(item.id, { value: weiValue });
+        const transaction = await contract.connect(signer).buy(item.id, { value: weiValue});
         await transaction.wait();
 
         setIsSuccessful(true);
@@ -71,7 +72,14 @@ const MyItem = ({ itemId }) => {
     window.scrollTo(0, 0);
   };
 
-  var size = ['xs', 's', 'm', 'l', 'xl'];
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
+  var sizes = ['xs', 's', 'm', 'l', 'xl'];
+
 
   return(
     <div className="myitem">
@@ -84,9 +92,15 @@ const MyItem = ({ itemId }) => {
           <h2>{item.cost} ETH</h2>
           <h3>size</h3>
           <div className="item__details__size">
-            {size.map ((size, index) =>(
-              <h3 key = {size} >{size}</h3> 
-            ))}
+        {sizes.map((size, index) => (
+          <h3
+            key={size}
+            className={size === selectedSize ? 'selected' : ''}
+            onClick={() => handleSizeClick(size)}
+          >
+            {size}
+          </h3>
+        ))}
           </div>
           <div className="item__detail_add_to_bag">
             {item.stock >= 1 ? 
@@ -94,7 +108,7 @@ const MyItem = ({ itemId }) => {
               <h1>add to bag</h1></button> :
             <h2>Sold Out</h2> }
           </div>
-          <div className="item__detail_rating item__details_same_line">
+          <div className="item__detail_rating same_line">
             <h4>RATING</h4>
             <div>
               <img src={item.rating >= 5 ? '/items/star.png' : '/items/blank.png' }  alt="Star"  />
@@ -104,7 +118,7 @@ const MyItem = ({ itemId }) => {
               <img src={item.rating >= 1 ? '/items/star.png' : '/items/blank.png' }  alt="Star"  />
             </div>
           </div>
-          <div className="item__detail_share item__details_same_line">
+          <div className="item__detail_share same_line">
             <h5>SHARE</h5>
             <div>
               <a href= "https://www.instagram.com" target ="_blank" rel="noreferrer"> <img src={'/instagram.png'} alt = "website"/></a>
@@ -113,17 +127,21 @@ const MyItem = ({ itemId }) => {
               <a href= "https://www.facebook.com" target ="_blank" rel="noreferrer"> <img src={'/facebook.png'} alt = "website" /></a>
             </div>
           </div>
-          <div className=" item__details_same_line">
+          <div className=" same_line">
             <h6>AVAILABILITY </h6> 
             {item.stock >= 1 ?  <h6>Available</h6>  : <h6>Currently Unavailable</h6>}
           </div>
-          <div className=" item__details_same_line">
+          <div className=" same_line">
             <h6>VENDOR  </h6>
             <h6>{item.vendor}</h6>
           </div>
-          <div className=" item__details_same_line">
+          <div className=" same_line">
             <h6>SHIPS FROM </h6>
              <h6>Boston</h6>
+          </div>
+          <div className=" same_line">
+            <h6>COLOR</h6>
+             <h6>{item.color}</h6>
           </div>
         </div>
       </div>
@@ -132,7 +150,7 @@ const MyItem = ({ itemId }) => {
         <div className="category__individual_items also_like" >
           {itemsData.items
           .filter((item) => item.category === category)
-          .slice(0-4)
+          .slice(0,4)
           .map((item) => (
             <div key={item.id} 
               className="ITEM-CONTAINER" 
@@ -154,6 +172,7 @@ const MyItem = ({ itemId }) => {
             isOpen={isOrderModalOpen}
             onClose= {handleClose}
             isSuccessful = {isSuccessful}
+            size = {size}
           />
 
         </>

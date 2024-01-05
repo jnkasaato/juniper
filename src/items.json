@@ -31,7 +31,7 @@
       "vendor": "PawPalace",
       "color": "brown",
       "image": "https://ipfs.io/ipfs/QmUXcC4GfZHBQZ4MdCdaZNbkAbXdxXatKExGkwK7aMJmQC?filename=11.jpg",
-      "cost": "1.75",
+      "cost": ".0001",
       "rating": 3,
       "stock": 20,
       "size": "s"
@@ -692,7 +692,7 @@
       "vendor": "CleanPaws",
       "color": "red",
       "image": "",
-      "cost": "2.20",
+      "cost": "1.20",
       "rating": 4,
       "stock": 50,
       "size": "xl"
@@ -704,7 +704,7 @@
       "vendor": "CleanPaws",
       "color": "pattern",
       "image": "",
-      "cost": "2.20",
+      "cost": "2.2",
       "rating": 5,
       "stock": 50,
       "size": ""
@@ -716,7 +716,7 @@
       "vendor": "CleanPaws",
       "color": "yellow",
       "image": "",
-      "cost": "2.20",
+      "cost": "2.1",
       "rating": 5,
       "stock": 50,
       "size": ""
@@ -728,7 +728,7 @@
       "vendor": "PetSupplies",
       "color": "pattern",
       "image": "",
-      "cost": "5.99",
+      "cost": ".6",
       "rating": 5,
       "stock": 30,
       "size": ""
@@ -740,7 +740,7 @@
       "vendor": "PetWorld",
       "color": "pattern",
       "image": "",
-      "cost": "7.49",
+      "cost": ".3",
       "rating": 5,
       "stock": 25,
       "size": ""
@@ -752,7 +752,7 @@
       "vendor": "PartyPets",
       "color": "pattern",
       "image": "",
-      "cost": "9.99",
+      "cost": ".5",
       "rating": 5,
       "stock": 20,
       "size": ""
@@ -764,7 +764,7 @@
       "vendor": "PetAccessories",
       "color": "pink",
       "image": "",
-      "cost": "3.95",
+      "cost": ".6",
       "rating": 5,
       "stock": 40,
       "size": ""
@@ -776,7 +776,7 @@
       "vendor": "BowWow",
       "color": "pattern",
       "image": "",
-      "cost": "2.99",
+      "cost": ".99",
       "rating": 4,
       "stock": 35,
       "size": "small"
@@ -788,7 +788,7 @@
       "vendor": "LeatherCraft",
       "color": "brown",
       "image": "",
-      "cost": "8.75",
+      "cost": ".75",
       "rating": 4,
       "stock": 28,
       "size": "medium"
@@ -800,7 +800,7 @@
       "vendor": "PetStyle",
       "color": "yellow",
       "image": "",
-      "cost": "6.99",
+      "cost": "1.99",
       "rating": 4,
       "stock": 24,
       "size": "large"
@@ -812,7 +812,7 @@
       "vendor": "PartyPets",
       "color": "green",
       "image": "",
-      "cost": "12.99",
+      "cost": ".99",
       "rating": 4,
       "stock": 18,
       "size": "xl"
@@ -824,7 +824,7 @@
       "vendor": "PetAccessories",
       "color": "green",
       "image": "",
-      "cost": "4.95",
+      "cost": ".95",
       "rating": 4,
       "stock": 38,
       "size": "medium"
@@ -836,7 +836,7 @@
       "vendor": "BowWow",
       "color": "pattern",
       "image": "",
-      "cost": "3.49",
+      "cost": ".49",
       "rating": 4,
       "stock": 33,
       "size": "small"
@@ -848,7 +848,7 @@
       "vendor": "LeatherCraft",
       "color": "black",
       "image": "",
-      "cost": "9.95",
+      "cost": "1.5",
       "rating": 4,
       "stock": 26,
       "size": "medium"
@@ -860,7 +860,7 @@
       "vendor": "PetStyle",
       "color": "black",
       "image": "",
-      "cost": "6.49",
+      "cost": "1.8",
       "rating": 4,
       "stock": 22,
       "size": "large"
@@ -872,7 +872,7 @@
       "vendor": "PartyPets",
       "color": "blue",
       "image": "",
-      "cost": "11.99",
+      "cost": "2.1",
       "rating": 4,
       "stock": 19,
       "size": "xl"
@@ -884,7 +884,7 @@
       "vendor": "PetAccessories",
       "color": "pattern",
       "image": "",
-      "cost": "5.95",
+      "cost": "1.5",
       "rating": 4,
       "stock": 42,
       "size": "medium"
@@ -896,7 +896,7 @@
       "vendor": "BowWow",
       "color": "",
       "image": "",
-      "cost": "4.99",
+      "cost": ".05",
       "rating": 4,
       "stock": 37,
       "size": "medium"
@@ -908,7 +908,7 @@
       "vendor": "PetSupplies",
       "color": "",
       "image": "",
-      "cost": "6.99",
+      "cost": ".15",
       "rating": 4,
       "stock": 29,
       "size": "large"
@@ -920,7 +920,7 @@
       "vendor": "PetWorld",
       "color": "",
       "image": "",
-      "cost": "8.49",
+      "cost": ".7",
       "rating": 4,
       "stock": 23,
       "size": "xl"
@@ -932,7 +932,7 @@
       "vendor": "PartyPets",
       "color": "",
       "image": "",
-      "cost": "14.99",
+      "cost": "1.2",
       "rating": 3,
       "stock": 17,
       "size": "small"
@@ -944,7 +944,7 @@
       "vendor": "PetAccessories",
       "color": "",
       "image": "",
-      "cost": "5.95",
+      "cost": ".6",
       "rating": 3,
       "stock": 41,
       "size": "medium"
@@ -956,7 +956,7 @@
       "vendor": "BowWow",
       "color": "",
       "image": "",
-      "cost": "2",
+      "cost": ".48",
       "rating": 3,
       "stock": 34,
       "size": "large"
@@ -968,7 +968,7 @@
       "vendor": "BowWow",
       "color": "pattern",
       "image": "",
-      "cost": "1.9",
+      "cost": ".80",
       "rating": 3,
       "stock": 34,
       "size": "large"
@@ -993,7 +993,7 @@
       "vendor": "BowWow",
       "color": "pattern",
       "image": "",
-      "cost": "3",
+      "cost": ".78",
       "rating": 4,
       "stock": 34,
       "size": "large"
@@ -1017,7 +1017,7 @@
       "vendor": "BowWow",
       "color": "black",
       "image": "",
-      "cost": "2.1",
+      "cost": "1.2",
       "rating": 4,
       "stock": 34,
       "size": "large"
@@ -1029,7 +1029,7 @@
       "vendor": "PetCo",
       "color": "red",
       "image": "",
-      "cost": "2.5",
+      "cost": ".03",
       "rating": 4,
       "stock": 34,
       "size": "large"
@@ -1041,7 +1041,7 @@
       "vendor": "PetCo",
       "color": "blue",
       "image": "",
-      "cost": "1.5",
+      "cost": ".8",
       "rating": 5,
       "stock": 34,
       "size": "large"
