@@ -1,9 +1,13 @@
-const OrderModal = ({ item, isOpen, onClose, isSuccessful, size}) => {
+const OrderModal = ({ item, isOpen, onClose, isSuccessful, link, size}) => {
   return (
     <div className="order__modal">
       <div className="modal__header">
         {isSuccessful ? (
-          <h1>Transaction Successful!</h1>
+          <div className = "modal__header_complete">
+          <h1>Thanks for your order</h1>
+          <a href= {link} target ="_blank" rel="noreferrer"> <h5>view hash</h5></a>
+          </div>
+
         ) : (
           <div className="modal__loading">
             <h1>Processing Order</h1>

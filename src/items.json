@@ -7,7 +7,7 @@
       "vendor": "PetMart",
       "color": "red",
       "image": "https://ipfs.io/ipfs/QmSUGzJjRMo1cwqeH7TDDTtQJt4qHGmQKyAYRJHPgow2tr?filename=1.jpg",
-      "cost": ".0001",
+      "cost": "1.2",
       "rating": 3,
       "stock": 50,
       "size": "s"
@@ -55,7 +55,7 @@
       "vendor": "TastyTreats",
       "color": "green",
        "image": "https://ipfs.io/ipfs/QmcBWPeBECiVfo4rhMcVbD4MZayBX68ScqjfNVfhjFz1cb?filename=5.jpg",
-      "cost": "0.99",
+      "cost": ".001",
       "rating": 3,
       "stock": 60,
       "size": "xl"
@@ -247,7 +247,7 @@
       "vendor": "CleanPaws",
       "color": "green",
       "image": "https://ipfs.io/ipfs/Qmb5dWPyma2JfJUtsVTUB9noXZye3f2fReTWSd1Mj9N41D?filename=14.jpg",
-      "cost": "0.70",
+      "cost": "2.7",
       "rating": 4,
       "stock": 50,
       "size": "l"
@@ -271,7 +271,7 @@
       "vendor": "CleanPaws",
       "color": "green",
       "image": "https://ipfs.io/ipfs/Qmb5dWPyma2JfJUtsVTUB9noXZye3f2fReTWSd1Mj9N41D?filename=14.jpg",
-      "cost": "0.40",
+      "cost": "0.004",
       "rating": 4,
       "stock": 50,
       "size": "l"
@@ -331,7 +331,7 @@
       "vendor": "CleanPaws",
       "color": "pattern",
       "image": "https://ipfs.io/ipfs/Qmb5dWPyma2JfJUtsVTUB9noXZye3f2fReTWSd1Mj9N41D?filename=14.jpg",
-      "cost": "0.40",
+      "cost": "1.4",
       "rating": 3,
       "stock": 50,
       "size": "l"
@@ -355,7 +355,7 @@
       "vendor": "CleanPaws",
       "color": "pink",
       "image": "https://ipfs.io/ipfs/Qmb5dWPyma2JfJUtsVTUB9noXZye3f2fReTWSd1Mj9N41D?filename=14.jpg",
-      "cost": "0.70",
+      "cost": "0.001",
       "rating": 5,
       "stock": 50,
       "size": "l"
@@ -548,7 +548,7 @@
       "vendor": "CleanPaws",
       "color": "green",
       "image": "",
-      "cost": "1.75",
+      "cost": ".0075",
       "rating": 4,
       "stock": 50,
       "size": "xl"
@@ -704,7 +704,7 @@
       "vendor": "CleanPaws",
       "color": "pattern",
       "image": "",
-      "cost": "2.2",
+      "cost": "2.5",
       "rating": 5,
       "stock": 50,
       "size": ""
@@ -728,7 +728,7 @@
       "vendor": "PetSupplies",
       "color": "pattern",
       "image": "",
-      "cost": ".6",
+      "cost": ".001",
       "rating": 5,
       "stock": 30,
       "size": ""
@@ -884,7 +884,7 @@
       "vendor": "PetAccessories",
       "color": "pattern",
       "image": "",
-      "cost": "1.5",
+      "cost": ".0015",
       "rating": 4,
       "stock": 42,
       "size": "medium"
@@ -896,7 +896,7 @@
       "vendor": "BowWow",
       "color": "",
       "image": "",
-      "cost": ".05",
+      "cost": "1.5",
       "rating": 4,
       "stock": 37,
       "size": "medium"
@@ -908,7 +908,7 @@
       "vendor": "PetSupplies",
       "color": "",
       "image": "",
-      "cost": ".15",
+      "cost": ".001",
       "rating": 4,
       "stock": 29,
       "size": "large"

@@ -9,10 +9,12 @@ import Juniper from '../abis/Juniper.json';
 const MyItem = ({ itemId }) => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const [contractAddress, setContractAddress] = useState('0x55f13B08056e14C9A31453CfF7cE9475e56BcF6C');
+  const [link, setLink] = useState('https://sepolia.etherscan.io/')
   const navigate = useNavigate();
   const item = itemsData.items[itemId - 1];
   const category = item.category;
-  let contractAddress;
+  let myNetwork
   let size;
 
 
@@ -34,32 +36,42 @@ const MyItem = ({ itemId }) => {
         const signer = provider.getSigner();
         const weiValue = ethers.utils.parseEther(item.cost);
         const network = await provider.getNetwork();
+        console.log('Processing...');
 
           if (network.chainId === 31337 ){
-             contractAddress = '0x49fd2BE640DB2910c2fAb69bB8531Ab6E76127ff';
+             setContractAddress('0x49fd2BE640DB2910c2fAb69bB8531Ab6E76127ff');
+             myNetwork = "etherscan.io/tx/";
           }
           else if ( network.chainId === 5){
-             contractAddress = '0x722B94F797aF487d762C05cf8143a68f65B4Bb37';
+             setContractAddress('0x722B94F797aF487d762C05cf8143a68f65B4Bb37');
+             myNetwork = "https://goerli.etherscan.io/tx/";
           }
           else if ( network.chainId === 80001){
-             contractAddress = '0xB59eedd21C653AA2f7e03f9461bBb718179EC8aC';
+             setContractAddress('0xB59eedd21C653AA2f7e03f9461bBb718179EC8aC');
+             myNetwork = "mumbai.polygonscan.com/tx/";
           }
           else {
-             contractAddress = '0x55f13B08056e14C9A31453CfF7cE9475e56BcF6C';
+             setContractAddress('0x55f13B08056e14C9A31453CfF7cE9475e56BcF6C');
+             myNetwork = "sepolia.etherscan.io/tx/";
           }
 
         const contractAbi = Juniper.abi;
         const contract = new ethers.Contract(contractAddress, contractAbi, signer);
         const transaction = await contract.connect(signer).buy(item.id, { value: weiValue});
         await transaction.wait();
-
+        const receipt = await transaction.wait();
+        const hash = receipt.transactionHash;
+        console.log('Transaction Successful:', hash);
+        setLink(`https://${myNetwork}${hash}`)
         setIsSuccessful(true);
       } catch (error) {
         if (error.message.includes('Insufficient funds')) {
           alert('Sorry. You have insufficient funds to purchase this item.');
+          handleClose();
         } else {
           console.error('Error sending transaction:', error);
           alert('Transaction failed. Please try again.');
+          handleClose();
         }
       }
     } else {
@@ -164,15 +176,13 @@ const MyItem = ({ itemId }) => {
       </div>
       {isOrderModalOpen && (
         <>
-          < Overlay
-            onClose= {handleClose}
-          />
+          < Overlay onClose= {handleClose}/>
           <OrderModal 
             item = {item}
             isOpen={isOrderModalOpen}
             onClose= {handleClose}
             isSuccessful = {isSuccessful}
-            size = {size}
+            link={link}
           />
 
         </>
