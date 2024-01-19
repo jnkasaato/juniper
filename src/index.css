@@ -21,34 +21,34 @@
 
 body {
   margin: 0;
-  font-family: 'Comfortaa';
+  font-family: 'Montserrat';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 
 h1{
-  font-family: 'Comfortaa';
+  font-family: 'Montserrat';
   color: var(--clr-black);
   font-size: 2.5em;
   font-weight: 300;
 }
 
 h2 {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1.15em;
   font-weight: 700;
 }
 
 h3{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 2.5em;
 }
 
 h4{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1.5em;
 }
@@ -85,9 +85,9 @@ h4{
   flex-direction: row; 
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 20px;
   width: 100%;
-  padding-bottom:20px;
+  padding-bottom:;
   background-color: #fff;
   top: 25px;
   border-bottom: .5px solid #00000020;
@@ -133,8 +133,8 @@ font-size: 1.1em;
   color: var(--clr-black);
   border: 2px solid var(--clr-black);
   border-radius: 4px;
-  padding: 5px 10px;
-  font-family: "Comfortaa";
+  padding: 5px 35px;
+  font-family: "Montserrat";
   font-size: 1em;
   font-weight: 700;
   cursor: pointer;
@@ -158,7 +158,8 @@ font-size: 1.1em;
   display: none;
   flex-direction: column;
   z-index: 2;
-  top: 85px;
+
+  
 }
 
 .nav__dropdown_menu a {
@@ -181,9 +182,6 @@ font-size: 1.1em;
   display: block; 
 }
 
-@media only screen and (max-width: 1450px) {
-
-}
 
 @media only screen and (max-width: 1200px) {
   .nav__connect,
@@ -210,7 +208,7 @@ font-size: 1.1em;
   .nav__menu_img,
   .nav__wallet_img {
     display: block;
-    height: 30px;
+    height: 25px;
     text-align: right;
     display: flex;
     justify-content: flex-end; 
@@ -219,6 +217,7 @@ font-size: 1.1em;
   .nav__branding{
      display: flex;
      justify-content: space-between;
+     align-items: center;
   }
 
   .nav__left_dropdown {
@@ -264,19 +263,26 @@ font-size: 1.1em;
 
   .nav__right_dropdown h1,
   .nav__left_dropdown h1{
-    font-size: 1.5em;
+    font-size: 1.4em;
+    margin: 30px;
+    border-bottom: 2px solid;
+    font-weight: bold;
+  }
+
+  .nav__right_dropdown h1{
+    font-size: 1.2em;
     margin: 30px;
     border-bottom: 2px solid;
     font-weight: bold;
   }
 
   .nav__left_dropdown h2{
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: regular;
   }
 
-    .nav__right_dropdown h2{
-    font-size: 1.5em;
+  .nav__right_dropdown h2{
+    font-size: 1.2em;
     font-weight: normal;
     text-align: left ;
     padding: 15px 30px;
@@ -284,7 +290,8 @@ font-size: 1.1em;
 
   .nav__right_dropdown li,
   .nav__left_dropdown li{
-   font-size: 1.2em;
+   font-size: 1em;
+
   }
 
   .nav__right_dropdown ul,
@@ -299,22 +306,36 @@ font-size: 1.1em;
   .nav__left_dropdown a {
     text-decoration: none;
     color: #000;
-    font-size: 1em;
+    font-size: 1.2em;
     display: block;
     margin-bottom: 15px;
   }
   .nav__menu_options{
     display: flex;
     justify-content: space-between;
-     padding: 10px 30px;
+    padding: 10px 30px;
+    align-items: center;
   }
 
   .nav__right_dropdown button{
     background-color: transparent;
     border: none;
     text-align: left;
+    align-items: left;
+    font-size: 1em;
   }
 
+  .nav__right_dropdown {
+    text-align: left;
+    font-size: 1.2em;
+  }
+  .nav__right_dropdown h1{
+    text-align: center;
+  }
+
+  .nav__left_dropdown ul{
+    list-style-type: none;
+  }
 
 }
 
@@ -392,7 +413,7 @@ font-size: 1.1em;
 
 .home__intro_info h1,
 .home__intro_info h3{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-white);
   font-size: 1.5em;
   font-weight: 600px;
@@ -437,10 +458,9 @@ font-size: 1.1em;
   }
 
    .home__intro_info2 h2{
-    font-size: 2.8em;
+    font-size: 2.5em;
     padding:0;
   }
-
 
   .home__intro_info{
     position: static;
@@ -517,7 +537,7 @@ padding:  0;
   border: 2px solid #ffffff01;
   border-bottom: 2px solid var(--clr-black);
   margin-top: 30px;
-  font-family: "Comfortaa";
+  font-family: "Montserrat";
   font-size: 1em;
   padding: 4px;
 }
@@ -574,7 +594,7 @@ padding:  0;
   object-fit: cover;
   height: 100%;
   width: 100%;
-  padding: 0 3.5% ;
+  padding: 3.5% ;
 }
 
 .home__collections-4-items{
@@ -593,7 +613,7 @@ padding:  0;
 }
 
 .home__featured-products h1{
-  font-family:'Comfortaa', cursive;
+  font-family:'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1.5em;
   padding: 20px 0;
@@ -609,11 +629,15 @@ padding:  0;
 }
 
 .home__featured-products h3{
-  font-family:'Comfortaa', cursive;
+  font-family:'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1.5em;
   padding: 50px 0;
   font-weight: 200; 
+}
+
+.home__featured_products_items div:nth-child(6){
+  display:none;
 }
 
 
@@ -634,7 +658,9 @@ padding:  0;
     padding: 3%;
   }
 
-
+  .home__spotlight_text button{
+    color: #000;
+  }
 
   .home__spotlight_items{
     display: grid;
@@ -654,6 +680,12 @@ padding:  0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .home__featured_products_items div:nth-child(6){
+    display:block;
+  }
+
+
 
 }
 
@@ -743,14 +775,14 @@ padding:  0;
     padding: 5% 0;
 }
 .category__options h1{
-  font-family:'Comfortaa', cursive;
+  font-family:'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1.5em;
   font-weight: 600;
 }
 
 .category__title{
-  font-family:'Comfortaa', cursive;
+  font-family:'Montserrat', cursive;
   font-size: 3.5em;
   font-weight: 200;
   padding: 0 3%;
@@ -785,7 +817,7 @@ padding:  0;
 
 .category__options_list_color h2,
 .category__options_size h2{
-  font-family:'Comfortaa', cursive;
+  font-family:'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1em;
   padding: 10px 20px;
@@ -796,7 +828,7 @@ padding:  0;
 
 .category__options_size_header h3,
 .category__options_color_header h3{
-  font-family:'Comfortaa', cursive;
+  font-family:'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 3em;
   font-weight: 600;
@@ -821,7 +853,7 @@ padding:  0;
 
 .category__individual_items{
   display: grid;
-  grid-template-rows: 400px 400px;
+  grid-template-rows: repeat(10, 1fr);
   overflow: hidden;
   object-fit: cover;
   grid-template-columns: 25% 25% 25% 25%;
@@ -913,7 +945,7 @@ padding:  0;
 }
 
 .ITEM-CONTAINER h5{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1em;
   font-weight: 300;
@@ -923,7 +955,7 @@ padding:  0;
 }
 
 .ITEM-CONTAINER h6{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1em;
   padding-bottom: 10px;
@@ -934,7 +966,11 @@ padding:  0;
     margin: 10px 0;
     overflow: visible;
 
-   
+   .
+.ITEM-CONTAINER img:hover{
+  border: none;
+}
+
   }
   .ITEM-CONTAINER img{
     height: 70%;
@@ -994,7 +1030,7 @@ padding:  0;
 }
 
 .item__details h1{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1.7em;
   font-weight: 800;
@@ -1003,7 +1039,7 @@ padding:  0;
 }
 
 .item__details h2{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1.2em;
   font-weight: 800;
@@ -1013,7 +1049,7 @@ padding:  0;
 }
 
 .item__details h3{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', cursive;
   color: var(--clr-black);
   font-size: 1em;
   font-weight: 600;
@@ -1477,7 +1513,7 @@ margin: 0 0 30px 0;
   margin-right: 10px;
   border: none; 
   background-color: var(--clr-white);
-  font-family: "Comfortaa";
+  font-family: "Montserrat";
   font-weight: 800;
   font-size:1em;
   width:300px;

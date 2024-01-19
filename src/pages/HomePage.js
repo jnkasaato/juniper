@@ -68,7 +68,7 @@ const HomePage = () => {
         <div className = "home__spotlight_text" >
           <h1>Step Out In Style</h1>
           <p>Step out in style with our adorable dog bows that turn every walk into a fashion runway for your furry friend! Let your pup strut their stuff with our playful and charming bows, designed to add a touch of whimsy to their wardrobe. </p>
-          <button onClick={()=> handleViewCollection( 'bow' ) }>Shop Collection</button>
+          <button onClick={()=> handleViewCollection( 'bow' ) }>Rocky's Collection</button>
           </div>
         <div className = "home__spotlight_items" >
         {itemsData.items
@@ -89,8 +89,8 @@ const HomePage = () => {
       </div>
       <div className = "home__collections">
       <div className = "home__collections-header floating-div" ref={floatIn3}>
-        <h1 >All play and no work</h1>
-        <button onClick={()=> handleViewCollection( 'costume' ) } >Olivia's Collection</button>
+        <h1 >Dress to Impress: Work & Play Edition</h1>
+        <button onClick={()=> handleViewCollection( 'costume' ) } >Micky's Collection</button>
       </div>
       <div className = "home__collections-whole floating-div" ref={floatIn1}>
         <img className = "home__collections-main-img"  src="/ghost.jpg" alt="img1" />
@@ -114,7 +114,7 @@ const HomePage = () => {
         <div className = "home__spotlight_text" >
           <h1>Sneaky Treats</h1>
           <p>Treat your fur-baby to a taste sensation with our delectable dog treats! Our curated selection of mouthwatering goodies is not only a delight for your pup's taste buds but also a celebration of their good behavior. From savory bites to sweet delights, your pup wont be able to get enough.</p>
-          <button onClick={()=> handleViewCollection( 'treat' ) }>Shop Collection</button>
+          <button onClick={()=> handleViewCollection( 'treat' ) }>Friendly's Collection</button>
         </div>
         <div className = "home__spotlight_items" >
           {itemsData.items
@@ -135,12 +135,12 @@ const HomePage = () => {
       <div className="home__background">
       <div className="home__featured-products">
         <h1>Featured Products<br/></h1>
-        <h2>Made to love – With love<br/></h2>
+        <h2>Crafted Affection 101<br/></h2>
         <h3>Louis & Co. • BOSTON, MA, USA <br/> EST - 2017</h3>
       <div className="home__featured_products_items floating-div" ref={floatIn2} >
          {itemsData.items
             .filter((item) => item.category === 'bandana')
-            .slice(11-16)
+            .slice(10-16)
             .map((item) => (
           <div
             key={item.id}
@@ -158,7 +158,7 @@ const HomePage = () => {
         <div className = "home__spotlight_text" >
           <h1> A Pampered Life</h1>
           <p>Elevate your pup's pampering experience with our grooming extravaganza! Dive into a world of fluff and fabulousness as we offer a range of grooming services that will have your furry friend looking and feeling like a true canine celebrity.</p>
-          <button onClick={()=> handleViewCollection( 'groom' ) }>Shop Collection</button>
+          <button onClick={()=> handleViewCollection( 'groom' ) }>Beth's Collection</button>
         </div>
         <div className = "home__spotlight_items" >
           {itemsData.items
@@ -183,7 +183,7 @@ const HomePage = () => {
         <div className = "home__spotlight_text" >
           <h1>Jetsetter's Guide</h1>
           <p>Embark on your next adventure with Louis & Co — where style meets functionality. Our meticulously crafted travel bags are designed to accompany you on every journey, boasting spacious compartments and durable materials for maximum convenience and durability.</p>
-          <button onClick={()=> handleViewCollection( 'travel' ) }>Shop Collection</button>
+          <button onClick={()=> handleViewCollection( 'travel' ) }>CoCo's Collection</button>
         </div>
         <div className = "home__spotlight_items" >
           {itemsData.items

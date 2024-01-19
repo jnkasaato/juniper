@@ -1,6 +1,6 @@
-const OrderModal = ({ item, isOpen, onClose, isSuccessful, link, size}) => {
-  return (
-    <div className="order__modal">
+const OrderModal = ({ item, isOpen, onClose, isSuccessful, link, size }) => {
+    return (
+        <div className="order__modal">
       <div className="modal__header">
         {isSuccessful ? (
           <div className = "modal__header_complete">
@@ -73,7 +73,7 @@ const OrderModal = ({ item, isOpen, onClose, isSuccessful, link, size}) => {
         <h4>• LOUIS & CO. • FAMILY BRAND • EST 2017</h4>
       </div>
     </div>
-  );
+    );
 };
 
 export default OrderModal;
